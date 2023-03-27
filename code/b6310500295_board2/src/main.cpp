@@ -20,7 +20,7 @@
 
 // ข้อมูลต่างๆ
 #define MQTT_USERNAME <YOUR MQTT USERNAME>
-#define MQTT_PASSWORD <YOUR MQTT PASSWORD>"kop"
+#define MQTT_PASSWORD <YOUR MQTT PASSWORD>
 #define MQTT_NAME <YOUR MQTT NAME>
 
 // กำหนด pin
