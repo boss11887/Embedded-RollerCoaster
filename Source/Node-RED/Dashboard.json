@@ -1,0 +1,324 @@
+[
+    {
+        "id": "94e4992ba0da790a",
+        "type": "mqtt in",
+        "z": "be047b3324992b17",
+        "name": "",
+        "topic": "b6310500350/fast/in",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "271d566564433b5a",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 390,
+        "y": 340,
+        "wires": [
+            [
+                "435a169593f5c8f2"
+            ]
+        ]
+    },
+    {
+        "id": "02d2370f5ad3aa21",
+        "type": "mqtt in",
+        "z": "be047b3324992b17",
+        "name": "",
+        "topic": "b6310500350/fast/out",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "271d566564433b5a",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 400,
+        "y": 400,
+        "wires": [
+            [
+                "435a169593f5c8f2"
+            ]
+        ]
+    },
+    {
+        "id": "435a169593f5c8f2",
+        "type": "function",
+        "z": "be047b3324992b17",
+        "name": "function 1",
+        "func": "// Code added here will be run once\n// whenever the node is started.\n\ncontext.set(msg.topic, msg.payload);\n\nvar n_in = context.get(\"b6310500350/fast/in\");\nvar n_out = context.get(\"b6310500350/fast/out\");\n\nif ((n_in === 0 && n_out === 0) || (n_in === undefined && n_out === undefined)) {\n    return {\n        payload: 0,\n        calculate: Math.ceil(0 / 3)\n    };\n}else {\n    var cal = n_in - n_out;\n    return {\n        payload: cal,\n        calculate: cal === 0 ? 0 : Math.ceil(cal / 3)* 2\n    };\n}\n\nreturn;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 380,
+        "wires": [
+            [
+                "6739631e92eca8a2",
+                "1d890405654237fb"
+            ]
+        ]
+    },
+    {
+        "id": "4c9d02400430b69d",
+        "type": "function",
+        "z": "be047b3324992b17",
+        "name": "function 2",
+        "func": "// Code added here will be run once\n// whenever the node is started.\n\ncontext.set(msg.topic, msg.payload);\n\nvar f_in = context.get(\"b6310500350/normal/in\");\nvar f_out = context.get(\"b6310500350/normal/out\");\n\nif ((f_in === 0 && f_out === 0) || (f_in === undefined && f_out === undefined)) {\n    return {\n        payload: 0,\n        calculate: Math.ceil(0 / 2)\n    };\n} else {\n    var cal = f_in - f_out;\n    return {\n        payload: cal,\n        calculate: cal === 0 ? 0 : Math.ceil(cal / 2)*2\n    };\n}\n\nreturn;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 500,
+        "wires": [
+            [
+                "1f9f6d1a70371286",
+                "7319c23a85c10ef1"
+            ]
+        ]
+    },
+    {
+        "id": "b723f4ff21733bd6",
+        "type": "mqtt in",
+        "z": "be047b3324992b17",
+        "name": "",
+        "topic": "b6310500350/normal/in",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "271d566564433b5a",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 400,
+        "y": 480,
+        "wires": [
+            [
+                "4c9d02400430b69d"
+            ]
+        ]
+    },
+    {
+        "id": "4287d9331b71a178",
+        "type": "mqtt in",
+        "z": "be047b3324992b17",
+        "name": "",
+        "topic": "b6310500350/normal/out",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "271d566564433b5a",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 410,
+        "y": 540,
+        "wires": [
+            [
+                "4c9d02400430b69d"
+            ]
+        ]
+    },
+    {
+        "id": "6739631e92eca8a2",
+        "type": "ui_text",
+        "z": "be047b3324992b17",
+        "group": "669ac65ffbdf94ff",
+        "order": 6,
+        "width": 10,
+        "height": 5,
+        "name": "จำนวนคิว",
+        "label": "จำนวนคิว",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "faster_queue",
+        "x": 1040,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "1f9f6d1a70371286",
+        "type": "ui_text",
+        "z": "be047b3324992b17",
+        "group": "669ac65ffbdf94ff",
+        "order": 3,
+        "width": 10,
+        "height": 5,
+        "name": "",
+        "label": "จำนวนคิว",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "normal_queue",
+        "x": 1040,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "0f8ea1c08541851e",
+        "type": "ui_template",
+        "z": "be047b3324992b17",
+        "group": "669ac65ffbdf94ff",
+        "name": "Normal Queue",
+        "order": 2,
+        "width": 7,
+        "height": 5,
+        "format": "<!DOCTYPE html>\n<html lang=\"en\">\n\n<head>\n    <meta charset=\"UTF-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Document</title>\n    <script src=\"https://cdn.tailwindcss.com\"></script>\n    <link href=\"https://fonts.googleapis.com/css2?family=Bai+Jamjuree&family=Itim&display=swap\" rel=\"stylesheet\">\n    <style>\n        * {\n            font-family: 'Itim', cursive;\n        }\n    </style>\n</head>\n\n<body>\n    <div class=\"max-w-[400px] h-full w-full mx-auto flex items-center justify-center text-5xl font-bold text-center rounded-xl bg-green-300 shadow-lg\">\n        Normal Queue\n    </div>\n</body>\n</html>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 380,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "196a5ad11744a907",
+        "type": "ui_template",
+        "z": "be047b3324992b17",
+        "group": "669ac65ffbdf94ff",
+        "name": "Fast Queue",
+        "order": 5,
+        "width": 7,
+        "height": 5,
+        "format": "<!DOCTYPE html>\n<html lang=\"en\">\n\n<head>\n    <meta charset=\"UTF-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Document</title>\n    <script src=\"https://cdn.tailwindcss.com\"></script>\n    <link href=\"https://fonts.googleapis.com/css2?family=Bai+Jamjuree&family=Itim&display=swap\" rel=\"stylesheet\">\n    <style>\n        * {\n            font-family: 'Itim', cursive;\n        }\n    </style>\n</head>\n\n<body>\n    <div\n        class=\"max-w-[400px] h-full w-full mx-auto flex items-center justify-center text-5xl font-bold text-center rounded-xl bg-yellow-300 shadow-lg mt-1\">\n        Fast Queue\n    </div>\n</body>\n\n</html>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 370,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1d890405654237fb",
+        "type": "ui_text",
+        "z": "be047b3324992b17",
+        "group": "669ac65ffbdf94ff",
+        "order": 7,
+        "width": 10,
+        "height": 5,
+        "name": "",
+        "label": "เวลาโดยประมาณ",
+        "format": "{{msg.calculate}} นาที",
+        "layout": "col-center",
+        "className": "estimate_fast",
+        "x": 1060,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "7319c23a85c10ef1",
+        "type": "ui_text",
+        "z": "be047b3324992b17",
+        "group": "669ac65ffbdf94ff",
+        "order": 4,
+        "width": 10,
+        "height": 5,
+        "name": "",
+        "label": "เวลาโดยประมาณ",
+        "format": "{{msg.calculate}} นาที",
+        "layout": "col-center",
+        "className": "estimate_normal",
+        "x": 1060,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "e8cb817aa74097a6",
+        "type": "ui_template",
+        "z": "be047b3324992b17",
+        "group": "669ac65ffbdf94ff",
+        "name": "",
+        "order": 1,
+        "width": 27,
+        "height": 2,
+        "format": "<!DOCTYPE html>\n<html lang=\"en\">\n\n<head>\n    <meta charset=\"UTF-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>Document</title>\n    <script src=\"https://cdn.tailwindcss.com\"></script>\n    <link href=\"https://fonts.googleapis.com/css2?family=Bai+Jamjuree&family=Itim&display=swap\" rel=\"stylesheet\">\n    <style>\n        * {\n            font-family: 'Itim', cursive;\n        }\n    </style>\n</head>\n\n<body>\n    <div class=\"max-w-[400px] h-[100px] w-full mx-auto text-6xl font-bold text-center\">\n        Roller Coaster\n    </div>\n</body>\n</html>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 360,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "96664d9e542627ee",
+        "type": "ui_template",
+        "z": "be047b3324992b17",
+        "group": "669ac65ffbdf94ff",
+        "name": "CSS",
+        "order": 13,
+        "width": 0,
+        "height": 0,
+        "format": "<style>\n    .flex-container {\n        display: flex;\n        flex-wrap: wrap;\n        background-color: black;\n    }\n\n    .faster_queue{\n    color:black;\n    border:1px solid black;\n    font-size:3rem;\n    border-radius:10px;\n    }\n    .normal_queue {\n        color:black;\n        border:1px solid black;\n        font-size:3rem;\n        border-radius:10px;\n    }\n    .estimate_fast{\n        color:black;\n        border:1px solid black;\n        font-size:3rem;\n        border-radius:10px;\n        margin-left:10px !important;\n    }\n    .estimate_normal {\n        color:black;\n        border:1px solid black;\n        font-size:3rem;\n        border-radius:10px;\n        margin-left:10px !important;\n    }\n</style>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 350,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "271d566564433b5a",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "34.124.255.39",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "669ac65ffbdf94ff",
+        "type": "ui_group",
+        "name": "Group1",
+        "tab": "c0512a1f3105070a",
+        "order": 1,
+        "disp": false,
+        "width": "27",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "c0512a1f3105070a",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
