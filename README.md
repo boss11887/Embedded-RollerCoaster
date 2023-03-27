@@ -41,16 +41,16 @@ Components used:
 Included in this directory:
 
 	1) Source: a folder containing the source code written for the NodeMCU-32S microcontrollers and the Node-RED dashboard project file
-		1.1) Code/b6310500066_board1: a folder containing the source code for the controller board
+		1.1) Source/b6310500066_board1/src: a folder containing the source code for the controller board
 			1.1.1) main.cpp
 				The main code in which containing operations relate to detect a tain wether a train will come in or go. There is a led that will illuminate when a train will come in
-		1.2) Code/b6310500295_board2: a folder containing the source code for the controller board
+		1.2) Source/b6310500295_board2/src: a folder containing the source code for the controller board
 			1.2.1) main.cpp
 				The main code in which containing operations relate to detect a people which are in the fast entrance. OLED is shown to the player
-		1.3) Code/b6310500350_board3: a folder containing the source code for the controller board
+		1.3) Source/b6310500350_board3/src: a folder containing the source code for the controller board
 			1.3.1) main.cpp
 				The main code in which containing operations relate to detect a people which are in the normal entrance. OLED is shown to the player
-		1.4) Code/b6310500325_board4: a folder containing the source code for the controller board
+		1.4) Source/b6310500325_board4/src: a folder containing the source code for the controller board
 			1.4.1) main.cpp
 				The main code in which containing operations relate to detect a people. If people carry object which contains a metal meterial, people will not pass entrance
 
@@ -60,7 +60,7 @@ Included in this directory:
 
 	2) LICENSE.txt: a GNU General Public License file
 	
-	3) README.txt: a readme file describing the project and the files included in this directory
+	3) README.md: a readme file describing the project and the files included in this directory
 	
 	4) Schematic.pdf: a schematic file detailing the construction of the two boards (sensors and controller boards.)
 	
