@@ -54,7 +54,7 @@ Included in this directory:
 			1.4.1) main.cpp
 				The main code in which containing operations relate to detect a people. If people carry object which contains a metal meterial, people will not pass entrance
 
-		1.2) Node-RED: a folder containing the dashboard project file
+		1.5) Node-RED: a folder containing the dashboard project file
 			1.2.1) Dashboard.json
 				A JSON file containing two Node-RED flows (Flow 1 and Flow 2.) Only Flow 2 is used to create the dashboard.
 
