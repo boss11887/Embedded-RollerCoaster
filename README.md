@@ -12,47 +12,29 @@
 
 Libraries used:
 
-	1) DHT20: library for the DHT20 temperature and humidity sensor
-		by Rob Tillaart 
-		(https://github.com/RobTillaart/DHT20)
-	
-	2) Adafruit_SSD1306: library for the SSD1306 128x64 OLED display
+	1) Adafruit_SSD1306: library for the SSD1306 128x64 OLED display
 		by Limor Fried
 		(https://github.com/adafruit/Adafruit_SSD1306)
 	
-	3) Adafruit_GFX: library for displaying graphical elements on the SSD1306
-		by Limor Fried
-		(https://github.com/adafruit/Adafruit-GFX-Library)
-			
-	4) TomThumb: font library for the SSD1306
-		by Brian J. Swetland & Vassilii Khachaturov 		(https://github.com/adafruit/Adafruit-GFX-Library/blob/master/Fonts/TomThumb.h)
-		
-	5) TaskScheduler: allows for more efficient, non-blocking loops 
-		by Anatoli Arkhipenko
-		(https://github.com/arkhipenko/TaskScheduler)
-		
-	6) PubSubClient: allows the ESP32-S3 to communicate with the MQTT broker  
+	2) PubSubClient: allows the ESP32-S3 to communicate with the MQTT broker  
 		by Nick O’Leary
 		(https://pubsubclient.knolleary.net/)
-		
-	7) Wire: library necessary for connection with I2C devices
-		by Nicholas Zambetti
-		(https://github.com/esp8266/Arduino/blob/master/libraries/Wire/Wire.h)
-		
-	8) WiFiClientSecure: allows connections to wireless networks and secure MQTT clouds
-		by Adrian McEwen
-		(https://github.com/espressif/arduino-esp32/blob/master/libraries/WiFiClientSecure/src/WiFiClientSecure.h)
+	
+	3) ESP32Servo: allows ESP32 boards to control servo
+		by Kevin Harrington
+		(https://www.arduinolibraries.info/libraries/esp32-servo)
 
 ------------------------------------------------------------------------
 
 Components used:
 
-	1) ESP32-S3 microcontrollers
-	2) DHT20 temperature and humidity sensor
-	3) SSD1306 128x64 I2C OLED display
-	4) Red, yellow and green LEDs
-	5) 220Ω and 10kΩ SMD resistors
-	6) 4x1 headers
+	1) NodeMCU-32S microcontrollers
+	2) SSD1306 128x64 I2C OLED display
+	3) green LEDs
+	4) 4.7kΩ ,10kΩ ,and 330Ω resistors
+	5) MG90S Servo Motor
+	6) IR Infrared photoelectric Sensor
+	7) Metal Touch Sensor
 	
 ------------------------------------------------------------------------	
 
