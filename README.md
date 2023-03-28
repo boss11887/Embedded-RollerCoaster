@@ -64,6 +64,6 @@ Included in this directory:
 	
 	4) Schematic.pdf: a schematic file detailing the construction of the two boards (sensors and controller boards.)
 
-	4) Picture: a folder containing picture of ths project
+	5) Picture: a folder containing picture of ths project
 
 	
